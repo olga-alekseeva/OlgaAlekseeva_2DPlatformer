@@ -11,7 +11,7 @@ namespace Platformer_2D
         Jump = 2
     }
 
-    [CreateAssetMenu(fileName = "SpriteAnimatorCfg", menuName = "Configs/ Animation", order = 1)]
+    [CreateAssetMenu(fileName = "SpriteAnimCfg", menuName = "Configs/ Animation", order = 1)]
     public class SpriteAnimatorConfig : ScriptableObject
     {
         [Serializable]
