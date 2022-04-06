@@ -14,6 +14,8 @@ namespace Platformer_2D
         [SerializeField] private LevelObjectView _enemyView;
         private SpriteAnimatorController _enemyAnimator;
 
+       // private ParalaxController _paralaxController;
+
         private void Awake()
         {
             _playerConfig = Resources.Load<SpriteAnimatorConfig>("PlayerAnimCfg");
@@ -23,12 +25,15 @@ namespace Platformer_2D
             _enemyConfig = Resources.Load<SpriteAnimatorConfig>("EnemyAnimCfg");
             _enemyAnimator = new SpriteAnimatorController(_enemyConfig);
             _enemyAnimator.StartAnimation(_enemyView._spriteRenderer, AnimState.Idle, true, _enemyAnimationSpeed);
+
+           // _paralaxController = new ParalaxController(_paralaxController._camera, _paralaxController._back);
         }
 
         void Update()
-        {
+        { 
             _playerAnimator.Update();
             _enemyAnimator.Update();
+         //   _paralaxController.Update();
         }
     }
 }
