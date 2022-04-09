@@ -8,7 +8,8 @@ namespace Platformer_2D
     {
         Idle = 0,
         Run = 1,
-        Jump = 2
+        Jump = 2,
+        Bend = 3
     }
 
     [CreateAssetMenu(fileName = "SpriteAnimCfg", menuName = "Configs/ Animation", order = 1)]

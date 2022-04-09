@@ -14,6 +14,7 @@ namespace Platformer_2D
         [SerializeField] private LevelObjectView _enemyView;
         private SpriteAnimatorController _enemyAnimator;
 
+        private PlayerTransformController _playerController;
        // private ParalaxController _paralaxController;
 
         private void Awake()
@@ -26,13 +27,15 @@ namespace Platformer_2D
             _enemyAnimator = new SpriteAnimatorController(_enemyConfig);
             _enemyAnimator.StartAnimation(_enemyView._spriteRenderer, AnimState.Idle, true, _enemyAnimationSpeed);
 
+            _playerController = new PlayerTransformController(_playerView, _playerAnimator);
            // _paralaxController = new ParalaxController(_paralaxController._camera, _paralaxController._back);
         }
 
         void Update()
         { 
-            _playerAnimator.Update();
+           // _playerAnimator.Update();
             _enemyAnimator.Update();
+            _playerController.Update();
          //   _paralaxController.Update();
         }
     }
