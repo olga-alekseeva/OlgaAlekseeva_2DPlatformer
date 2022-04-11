@@ -17,6 +17,7 @@ namespace Platformer_2D
         private CannonAimController _cannonAimController;
         private BulletEmitterController _bulletEmitterController;
         private PlayerController _playerController;
+        private CameraController _cameraController;
        // private ParalaxController _paralaxController;
 
         private void Awake()
@@ -31,6 +32,7 @@ namespace Platformer_2D
             _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform); 
             _bulletEmitterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emitterTransform);
             _playerController = new PlayerController(_playerView, _playerAnimator);
+            _cameraController = new CameraController(_playerView, Camera.main.transform);
            // _paralaxController = new ParalaxController(_paralaxController._camera, _paralaxController._back);
         }
 
@@ -39,7 +41,7 @@ namespace Platformer_2D
            // _playerAnimator.Update();
             _enemyAnimator.Update();
             _playerController.Update();
-
+            _cameraController.Update();
             _cannonAimController.Update();
             _bulletEmitterController.Update();
          //   _paralaxController.Update();

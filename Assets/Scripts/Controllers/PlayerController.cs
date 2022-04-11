@@ -4,7 +4,7 @@ namespace Platformer_2D
 {
     public class PlayerController
     {
-        private const float _speed = 300f;
+        private const float _speed = 150f;
         private const float _animationSpeed = 10f;
         private const float _jumpSpeed = 10f;
         private const float _movingTresh = 0.1f;
@@ -60,7 +60,7 @@ namespace Platformer_2D
         }
         private void MoveTowards()
         {
-            _xVelosity = Time.deltaTime * _speed * (_xAxisInput < 0 ? -1 : 1);
+            _xVelosity = Time.fixedDeltaTime * _speed * (_xAxisInput < 0 ? -1 : 1);
             _view._rb.velocity = _view._rb.velocity.Change(x: _xVelosity);
             _view._transform.localScale = (_xAxisInput < 0 ? _leftScale : _rightScale);
         }
