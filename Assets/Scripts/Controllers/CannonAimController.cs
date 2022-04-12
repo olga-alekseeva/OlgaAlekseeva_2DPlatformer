@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Platformer_2D
 {
-    public class CannonAimController 
+    public class CannonAimController
     {
         private Transform _muzzleTransform;
         private Transform _targetTransform;
@@ -11,12 +11,12 @@ namespace Platformer_2D
         private float _angle;
         private Vector3 _axis;
 
-        public CannonAimController(Transform muzzTransform, Transform _plTransform)
+        public CannonAimController(Transform muzzleTransform, Transform _plTransform)
         {
-            _muzzleTransform = muzzTransform;
+            _muzzleTransform = muzzleTransform;
             _targetTransform = _plTransform;
         }
-        void Update()
+        public void Update()
         {
             _dir = _targetTransform.position - _muzzleTransform.position;
             _angle = Vector3.Angle(Vector3.down, _dir);
