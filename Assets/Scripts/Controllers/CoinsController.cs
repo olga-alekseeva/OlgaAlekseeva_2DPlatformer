@@ -32,6 +32,7 @@ namespace Platformer_2D
             {
                 _spriteAnimator?.StopAnimation(contactView._spriteRenderer);
                GameObject.Destroy(contactView.gameObject);
+                _coinViews.Remove(contactView);
             }
 
         }
