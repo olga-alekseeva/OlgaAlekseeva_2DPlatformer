@@ -6,7 +6,7 @@ namespace Platformer_2D
     {
         private const float _speed = 5f;
         private const float _animationSpeed = 10f;
-        private const float _jumpSpeed = 8f;
+        private const float _jumpSpeed = 10f;
         private const float _g = -9.8f;
         private const float _movingTresh = 0.1f;
         private const float _jumpTresh = 1f;
