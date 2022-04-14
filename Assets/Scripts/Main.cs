@@ -5,6 +5,7 @@ namespace Platformer_2D
 {
     public class Main : MonoBehaviour
     {
+        [SerializeField] public GameObject _background;
         [SerializeField] private SpriteAnimatorConfig _playerConfig;
         [SerializeField] private SpriteAnimatorConfig _coinConfig;
         [SerializeField] private SpriteAnimatorConfig _enemyConfig;
@@ -55,7 +56,7 @@ namespace Platformer_2D
             _cannonAimController.Update();
             _bulletEmitterController.Update();
             _coinAnimator.Update();
-          // _paralaxController.Update();
+           // _paralaxController.Update();
         }
     }
 }
