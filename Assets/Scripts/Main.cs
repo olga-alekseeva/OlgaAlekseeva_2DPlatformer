@@ -5,7 +5,10 @@ namespace Platformer_2D
 {
     public class Main : MonoBehaviour
     {
-        [SerializeField] public GameObject _background;
+        [SerializeField] private Camera _camera;
+        [SerializeField] private GameObject _background;
+        [SerializeField] private GameObject _middleBackground;
+        [SerializeField] private GameObject _frontBackground;
         [SerializeField] private SpriteAnimatorConfig _playerConfig;
         [SerializeField] private SpriteAnimatorConfig _coinConfig;
         [SerializeField] private SpriteAnimatorConfig _enemyConfig;
@@ -15,7 +18,6 @@ namespace Platformer_2D
         [SerializeField] private LevelObjectView _enemyView;
         [SerializeField] private CannonView _cannonView;
         [SerializeField] private List<LevelObjectView> _coinViews;
-        //[SerializeField] private ParalaxController back;
         private SpriteAnimatorController _enemyAnimator;
         private SpriteAnimatorController _playerAnimator;
         private SpriteAnimatorController _coinAnimator;
@@ -24,7 +26,7 @@ namespace Platformer_2D
         private PlayerController _playerController;
         private CameraController _cameraController;
         private CoinsController _coinsController;
-       // private ParalaxController _paralaxController;
+        private ParalaxController _paralaxController;
 
         private void Awake()
         {
@@ -45,7 +47,7 @@ namespace Platformer_2D
 
             _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform); 
             _bulletEmitterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emitterTransform);
-           // _paralaxController = new ParalaxController(_paralaxController._camera, _paralaxController._back);
+            _paralaxController = new ParalaxController(_camera.transform, _background.transform, _middleBackground.transform, _frontBackground.transform);
         }
 
         void Update()
@@ -56,7 +58,7 @@ namespace Platformer_2D
             _cannonAimController.Update();
             _bulletEmitterController.Update();
             _coinAnimator.Update();
-           // _paralaxController.Update();
+            _paralaxController.Update();
         }
     }
 }
