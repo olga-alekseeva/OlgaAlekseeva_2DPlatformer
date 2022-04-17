@@ -15,8 +15,8 @@ namespace Platformer_2D
         public Vector3 _frontStartPos;
         public Vector3 _cameraStartPosition;
         private const float _coef = 0.3f;
-        private const float _midCoef = 1f;
-        private const float _frontCoef = -0.7f;
+        private const float _midCoef = 0.5f;
+        private const float _frontCoef = -1f;
 
 
         public ParalaxController(Transform camera, Transform back, Transform middleBack, Transform front)
