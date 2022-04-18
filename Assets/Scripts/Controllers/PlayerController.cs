@@ -26,7 +26,8 @@ namespace Platformer_2D
             _view = view;
             _animatorConroller = spriteAnimator;
             _animatorConroller.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _animationSpeed);
-            _contactPooler = new ContactPooler(_view._collider);
+             _contactPooler = new ContactPooler(_view._collider);
+
         }
         public void Update()
         {

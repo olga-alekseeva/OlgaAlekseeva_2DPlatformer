@@ -5,6 +5,10 @@ namespace Platformer_2D
 {
     public class Main : MonoBehaviour
     {
+        [SerializeField] private Camera _camera;
+        [SerializeField] private GameObject _background;
+        [SerializeField] private GameObject _middleBackground;
+        [SerializeField] private GameObject _frontBackground;
         [SerializeField] private SpriteAnimatorConfig _playerConfig;
         [SerializeField] private SpriteAnimatorConfig _coinConfig;
         [SerializeField] private SpriteAnimatorConfig _enemyConfig;
@@ -14,9 +18,6 @@ namespace Platformer_2D
         [SerializeField] private LevelObjectView _enemyView;
         [SerializeField] private CannonView _cannonView;
         [SerializeField] private List<LevelObjectView> _coinViews;
-
-
-
         private SpriteAnimatorController _enemyAnimator;
         private SpriteAnimatorController _playerAnimator;
         private SpriteAnimatorController _coinAnimator;
@@ -25,37 +26,39 @@ namespace Platformer_2D
         private PlayerController _playerController;
         private CameraController _cameraController;
         private CoinsController _coinsController;
-       // private ParalaxController _paralaxController;
+        private ParalaxController _paralaxController;
 
         private void Awake()
         {
+            _cameraController = new CameraController(_playerView, Camera.main.transform);
+
             _playerConfig = Resources.Load<SpriteAnimatorConfig>("PlayerAnimCfg");
             _playerAnimator = new SpriteAnimatorController(_playerConfig);
             _playerAnimator.StartAnimation(_playerView._spriteRenderer, AnimState.Idle, true, _playerAnimationSpeed);
+            _playerController = new PlayerController(_playerView, _playerAnimator);
 
             _enemyConfig = Resources.Load<SpriteAnimatorConfig>("EnemyAnimCfg");
-            _coinConfig = Resources.Load<SpriteAnimatorConfig>("CoinAnimCfg");
             _enemyAnimator = new SpriteAnimatorController(_enemyConfig);
-            _coinAnimator = new SpriteAnimatorController(_coinConfig);
             _enemyAnimator.StartAnimation(_enemyView._spriteRenderer, AnimState.Idle, true, _enemyAnimationSpeed);
+
+            _coinConfig = Resources.Load<SpriteAnimatorConfig>("CoinAnimCfg");
+            _coinAnimator = new SpriteAnimatorController(_coinConfig);
+            _coinsController = new CoinsController(_playerView, _coinViews, _coinAnimator);
+
             _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform); 
             _bulletEmitterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emitterTransform);
-            _playerController = new PlayerController(_playerView, _playerAnimator);
-            _cameraController = new CameraController(_playerView, Camera.main.transform);
-            _coinsController = new CoinsController(_playerView, _coinViews, _coinAnimator);
-            // _paralaxController = new ParalaxController(_paralaxController._camera, _paralaxController._back);
+            _paralaxController = new ParalaxController(_camera.transform, _background.transform, _middleBackground.transform, _frontBackground.transform);
         }
 
         void Update()
         { 
-           // _playerAnimator.Update();
-            _enemyAnimator.Update();
-            _playerController.Update();
             _cameraController.Update();
+            _playerController.Update();
+            _enemyAnimator.Update();
             _cannonAimController.Update();
             _bulletEmitterController.Update();
             _coinAnimator.Update();
-         //   _paralaxController.Update();
+            _paralaxController.Update();
         }
     }
 }

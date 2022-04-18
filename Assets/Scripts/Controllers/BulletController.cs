@@ -8,6 +8,7 @@ namespace Platformer_2D
     {
         private Vector3 _velocity;
         private LevelObjectView _view;
+        private SetVelocity _setVelocity;
 
         public BulletController(LevelObjectView view)
         {
@@ -18,17 +19,12 @@ namespace Platformer_2D
         {
             _view.gameObject.SetActive(val);
         }
-        private void SetVelocity(Vector3 velocity)
-        {
-            _velocity = velocity;
-            float angle = Vector3.Angle(Vector3.left, _velocity);
-            Vector3 axis = Vector3.Cross(Vector3.left, _velocity);
-            _view.transform.rotation = Quaternion.AngleAxis(angle, axis);
-        }
+        
         public void Throw(Vector3 position,Vector3 velocity)
         {
             Active(true);
-            SetVelocity(velocity);
+            _velocity = velocity;
+            SetVelocity setVelocity = new SetVelocity(velocity, _view._transform);
             _view._transform.position = position;
             _view._rb.velocity = Vector2.zero;
             _view._rb.angularVelocity = 0;

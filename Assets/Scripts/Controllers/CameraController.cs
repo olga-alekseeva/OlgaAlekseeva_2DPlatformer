@@ -6,7 +6,7 @@ namespace Platformer_2D
     {
         private LevelObjectView _playerView;
         private Transform _playerTransform;
-        private Transform _cameraTransform;
+        public Transform _cameraTransform;
 
         private float _camSpeed = 1.2f;
 

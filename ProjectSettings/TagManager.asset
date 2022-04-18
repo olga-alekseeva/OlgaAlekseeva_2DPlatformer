@@ -5,14 +5,15 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Background
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Background
   - Water
   - UI
-  - 
+  - Platforms
   - 
   - 
   - 
