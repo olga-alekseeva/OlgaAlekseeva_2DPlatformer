@@ -1,16 +1,15 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 namespace Platformer_2D
 {
-    public class CoinsController: IDisposable
+    public class CoinsController : IDisposable
     {
         private float _animationSpeed = 10f;
         private SpriteAnimatorController _spriteAnimator;
         private LevelObjectView _playerView;
-        private  List<LevelObjectView> _coinViews;
+        private List<LevelObjectView> _coinViews;
 
         public CoinsController(LevelObjectView playerView, List<LevelObjectView> coinViews, SpriteAnimatorController spriteAnimator)
         {
@@ -24,14 +23,14 @@ namespace Platformer_2D
                 _spriteAnimator.StartAnimation(coin._spriteRenderer, AnimState.Idle, true, _animationSpeed);
             }
         }
-        
-            private void OnLevelObjectContact(LevelObjectView contactView)
+
+        private void OnLevelObjectContact(LevelObjectView contactView)
 
         {
-            if(_coinViews.Contains(contactView))
+            if (_coinViews.Contains(contactView))
             {
                 _spriteAnimator?.StopAnimation(contactView._spriteRenderer);
-               GameObject.Destroy(contactView.gameObject);
+                GameObject.Destroy(contactView.gameObject);
                 _coinViews.Remove(contactView);
             }
 
@@ -40,6 +39,6 @@ namespace Platformer_2D
         {
             _playerView.OnLevelObjectContact -= OnLevelObjectContact;
         }
-    
+
     }
 }

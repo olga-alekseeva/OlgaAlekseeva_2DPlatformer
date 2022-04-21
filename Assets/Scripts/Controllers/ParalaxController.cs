@@ -14,7 +14,7 @@ namespace Platformer_2D
         public Vector3 _middleBackStartPos;
         public Vector3 _frontStartPos;
         public Vector3 _cameraStartPosition;
-        private const float _coef = 0.3f;
+       // private const float _coef = 0.3f;
         private const float _midCoef = 0.5f;
         private const float _frontCoef = -1f;
 
@@ -33,7 +33,7 @@ namespace Platformer_2D
         public void Update()
         {
             _back.position = _backStartPosition + (_camera.position -
-            _cameraStartPosition) * _coef;
+            _cameraStartPosition) ;
             _middleBack.position = _middleBackStartPos + (_camera.position - _cameraStartPosition) * _midCoef;
             _front.position = _frontStartPos + (_camera.position - _cameraStartPosition) * _frontCoef;
 

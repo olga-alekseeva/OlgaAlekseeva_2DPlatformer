@@ -16,8 +16,11 @@ namespace Platformer_2D
         [SerializeField] private int _enemyAnimationSpeed = 3;
         [SerializeField] private LevelObjectView _playerView;
         [SerializeField] private LevelObjectView _enemyView;
+        //[SerializeField] private LevelObjectView _waterView;
         [SerializeField] private CannonView _cannonView;
         [SerializeField] private List<LevelObjectView> _coinViews;
+        [SerializeField] private QuestView _questView;
+
         private SpriteAnimatorController _enemyAnimator;
         private SpriteAnimatorController _playerAnimator;
         private SpriteAnimatorController _coinAnimator;
@@ -28,26 +31,37 @@ namespace Platformer_2D
         private CoinsController _coinsController;
         private ParalaxController _paralaxController;
 
+      //  [SerializeField] private SpriteAnimatorConfig _waterConfig;
+       // private SpriteAnimatorController _waterAnimator; 
+        private QuestConfiguratorController _questConfiguratorController;
+
         private void Awake()
         {
             _cameraController = new CameraController(_playerView, Camera.main.transform);
 
-            _playerConfig = Resources.Load<SpriteAnimatorConfig>("PlayerAnimCfg");
+            _playerConfig = Resources.Load<SpriteAnimatorConfig>("Player/PlayerAnimCfg");
             _playerAnimator = new SpriteAnimatorController(_playerConfig);
             _playerAnimator.StartAnimation(_playerView._spriteRenderer, AnimState.Idle, true, _playerAnimationSpeed);
             _playerController = new PlayerController(_playerView, _playerAnimator);
 
-            _enemyConfig = Resources.Load<SpriteAnimatorConfig>("EnemyAnimCfg");
+            _enemyConfig = Resources.Load<SpriteAnimatorConfig>("Enemies/EnemyAnimCfg");
             _enemyAnimator = new SpriteAnimatorController(_enemyConfig);
             _enemyAnimator.StartAnimation(_enemyView._spriteRenderer, AnimState.Idle, true, _enemyAnimationSpeed);
 
-            _coinConfig = Resources.Load<SpriteAnimatorConfig>("CoinAnimCfg");
+            _coinConfig = Resources.Load<SpriteAnimatorConfig>("Bonuses/CoinAnimCfg");
             _coinAnimator = new SpriteAnimatorController(_coinConfig);
             _coinsController = new CoinsController(_playerView, _coinViews, _coinAnimator);
+
+           // _waterConfig = Resources.Load<SpriteAnimatorConfig>("WaterAnimCfg");
+           // _waterAnimator = new SpriteAnimatorController(_waterConfig);
+           // _waterAnimator.StartAnimation(_waterView, _spriteRenderer);
 
             _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform); 
             _bulletEmitterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emitterTransform);
             _paralaxController = new ParalaxController(_camera.transform, _background.transform, _middleBackground.transform, _frontBackground.transform);
+
+            _questConfiguratorController = new QuestConfiguratorController(_questView);
+            _questConfiguratorController.Init();    
         }
 
         void Update()
@@ -59,6 +73,7 @@ namespace Platformer_2D
             _bulletEmitterController.Update();
             _coinAnimator.Update();
             _paralaxController.Update();
+           // _waterAnimator.Update();
         }
     }
 }
