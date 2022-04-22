@@ -8,6 +8,7 @@ namespace Platformer_2D
         [SerializeField] private Camera _camera;
         [SerializeField] private GameObject _background;
         [SerializeField] private GameObject _middleBackground;
+        [SerializeField] private GameObject _middleFrontBackground;
         [SerializeField] private GameObject _frontBackground;
         [SerializeField] private SpriteAnimatorConfig _playerConfig;
         [SerializeField] private SpriteAnimatorConfig _coinConfig;
@@ -20,6 +21,8 @@ namespace Platformer_2D
         [SerializeField] private CannonView _cannonView;
         [SerializeField] private List<LevelObjectView> _coinViews;
         [SerializeField] private QuestView _questView;
+        [SerializeField]private CharacterObjectConfig _playerObjectConfig;
+       // [SerializeField] private PlayerObjectView _playerView;
 
         private SpriteAnimatorController _enemyAnimator;
         private SpriteAnimatorController _playerAnimator;
@@ -42,7 +45,9 @@ namespace Platformer_2D
             _playerConfig = Resources.Load<SpriteAnimatorConfig>("Player/PlayerAnimCfg");
             _playerAnimator = new SpriteAnimatorController(_playerConfig);
             _playerAnimator.StartAnimation(_playerView._spriteRenderer, AnimState.Idle, true, _playerAnimationSpeed);
-            _playerController = new PlayerController(_playerView, _playerAnimator);
+            _playerObjectConfig = Resources.Load<CharacterObjectConfig>("Player/PlayerObjectCfg");
+            _playerController = new PlayerController(_playerView, _playerAnimator, _playerObjectConfig);
+
 
             _enemyConfig = Resources.Load<SpriteAnimatorConfig>("Enemies/EnemyAnimCfg");
             _enemyAnimator = new SpriteAnimatorController(_enemyConfig);
@@ -58,7 +63,7 @@ namespace Platformer_2D
 
             _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform); 
             _bulletEmitterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emitterTransform);
-            _paralaxController = new ParalaxController(_camera.transform, _background.transform, _middleBackground.transform, _frontBackground.transform);
+            _paralaxController = new ParalaxController(_camera.transform, _background.transform, _middleBackground.transform, _middleFrontBackground.transform, _frontBackground.transform);
 
             _questConfiguratorController = new QuestConfiguratorController(_questView);
             _questConfiguratorController.Init();    
