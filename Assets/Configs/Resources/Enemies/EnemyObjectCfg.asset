@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bd5ad5c130daf246bd9f054eda4cfce, type: 3}
-  m_Name: PlayerObjectCfg
+  m_Name: EnemyObjectCfg
   m_EditorClassIdentifier: 
   health: 20
   speed: 150
   MaxHealth: 20
   MinHealth: 0
   animationSpeed: 10
-  jumpSpeed: 10
-  movingTresh: 0.1
-  jumpTresh: 1
+  jumpSpeed: 0
+  movingTresh: 0
+  jumpTresh: 0
