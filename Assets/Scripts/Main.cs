@@ -22,7 +22,8 @@ namespace Platformer_2D
         [SerializeField] private List<LevelObjectView> _coinViews;
         [SerializeField] private QuestView _questView;
         [SerializeField]private CharacterObjectConfig _playerObjectConfig;
-       // [SerializeField] private PlayerObjectView _playerView;
+        // [SerializeField] private PlayerObjectView _playerView;
+        [SerializeField] private GeneratorLevelView _genView;
 
         private SpriteAnimatorController _enemyAnimator;
         private SpriteAnimatorController _playerAnimator;
@@ -33,6 +34,7 @@ namespace Platformer_2D
         private CameraController _cameraController;
         private CoinsController _coinsController;
         private ParalaxController _paralaxController;
+        private GeneratorController _generatorController;
 
       //  [SerializeField] private SpriteAnimatorConfig _waterConfig;
        // private SpriteAnimatorController _waterAnimator; 
@@ -64,6 +66,9 @@ namespace Platformer_2D
             _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform); 
             _bulletEmitterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emitterTransform);
             _paralaxController = new ParalaxController(_camera.transform, _background.transform, _middleBackground.transform, _middleFrontBackground.transform, _frontBackground.transform);
+
+            _generatorController = new GeneratorController(_genView);
+            _generatorController.Init();
 
             _questConfiguratorController = new QuestConfiguratorController(_questView);
             _questConfiguratorController.Init();    
