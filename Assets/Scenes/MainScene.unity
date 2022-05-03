@@ -329,7 +329,7 @@ MonoBehaviour:
   - {fileID: 1247410261}
   - {fileID: 1061792484}
   _questView: {fileID: 671583797}
-  _playerObjectConfig: {fileID: 0}
+  _playerObjectConfig: {fileID: 11400000, guid: f340385cc6d2fd445a3b6b3a0e0958f5, type: 2}
   _genView: {fileID: 808156851}
 --- !u!1 &78545649
 GameObject:
