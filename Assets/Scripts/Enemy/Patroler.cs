@@ -20,7 +20,6 @@ public class Patroler : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Vector2.Distance(transform.position, point.position)< positionOfPatrol && angry == false)
