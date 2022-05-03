@@ -21,18 +21,18 @@ namespace Platformer_2D
         private SpriteAnimatorController _animatorController;
         private EnemyObjectView _enemyView;
 
-        public EnemyController(CharacterObjectConfig config, LevelObjectView view, 
+        public EnemyController(CharacterObjectConfig config, LevelObjectView view, PointOfPatrouling patrouling,
            SpriteAnimatorController animatorController)
         {
             _enemyObjectConfig = config;
             _view = view;
-            
+            _patrouling = patrouling;
             _animatorController = animatorController;
-            _animatorController.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _enemyObjectConfig.animationSpeed);
+           // _animatorController.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _enemyObjectConfig.animationSpeed);
         }
         public void Update()
         {
-            _animatorController.Update();
+            
             if (Vector2.Distance(_enemyView.transform.position, _patrouling.pointOfPatrouling.position) < _patrouling.patroulRange && angry == false)
             {
                 chill = true;
@@ -62,7 +62,7 @@ namespace Platformer_2D
             }
 
         }
-        public void Chill()
+        private void Chill()
         {
             if (_enemyView.transform.position.x > _patrouling.pointOfPatrouling.position.x + _patrouling.patroulRange)
             {
@@ -82,12 +82,12 @@ namespace Platformer_2D
             }
 
         }
-        void Angry()
+        private void Angry()
         {
             float newSpeed = _enemyObjectConfig.speed * 2;
             _enemyView.transform.position = Vector2.MoveTowards(_enemyView.transform.position, _playerObjectView._transform.position, newSpeed * Time.deltaTime);
         }
-        void GoBack()
+        private void GoBack()
         {
             _enemyView.transform.position = Vector2.MoveTowards(_enemyView.transform.position, _patrouling.pointOfPatrouling.position, _enemyObjectConfig.speed * Time.deltaTime);
 

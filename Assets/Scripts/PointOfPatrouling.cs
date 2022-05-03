@@ -9,7 +9,7 @@ namespace Platformer_2D
     {
         [SerializeField] private Transform _pointOfPatrouling;
 
-        [SerializeField, Range(-50f, 50f)] private float _patroulRange;
+        [SerializeField, Range(0f, 50f)] private float _patroulRange;
 
         public Transform pointOfPatrouling { get => _pointOfPatrouling; set => _pointOfPatrouling = value; }
         public float patroulRange { get => _patroulRange; set => _patroulRange = value; }
