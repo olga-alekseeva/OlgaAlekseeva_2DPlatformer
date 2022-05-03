@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public interface IEnemy 
+namespace Platformer_2D
 {
-   
+    public interface IEnemy
+    {
+       
+
+    }
 }

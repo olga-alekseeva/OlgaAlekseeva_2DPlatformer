@@ -21,21 +21,23 @@ namespace Platformer_2D
         [SerializeField] private CannonView _cannonView;
         [SerializeField] private List<LevelObjectView> _coinViews;
         [SerializeField] private QuestView _questView;
-        [SerializeField]private CharacterObjectConfig _playerObjectConfig;
-       // [SerializeField] private PlayerObjectView _playerView;
+        [SerializeField] private CharacterObjectConfig _playerObjectConfig;
+        [SerializeField] private CharacterObjectConfig _enemyObjectConfig;
+        // [SerializeField] private PlayerObjectView _playerView;
 
-        private SpriteAnimatorController _enemyAnimator;
         private SpriteAnimatorController _playerAnimator;
+        private SpriteAnimatorController _enemyAnimator;
         private SpriteAnimatorController _coinAnimator;
         private CannonAimController _cannonAimController;
         private BulletEmitterController _bulletEmitterController;
         private PlayerController _playerController;
+        private EnemyController _enemyController;
         private CameraController _cameraController;
         private CoinsController _coinsController;
         private ParalaxController _paralaxController;
 
-      //  [SerializeField] private SpriteAnimatorConfig _waterConfig;
-       // private SpriteAnimatorController _waterAnimator; 
+        //  [SerializeField] private SpriteAnimatorConfig _waterConfig;
+        // private SpriteAnimatorController _waterAnimator; 
         private QuestConfiguratorController _questConfiguratorController;
 
         private void Awake()
@@ -52,33 +54,37 @@ namespace Platformer_2D
             _enemyConfig = Resources.Load<SpriteAnimatorConfig>("Enemies/EnemyAnimCfg");
             _enemyAnimator = new SpriteAnimatorController(_enemyConfig);
             _enemyAnimator.StartAnimation(_enemyView._spriteRenderer, AnimState.Idle, true, _enemyAnimationSpeed);
+            _enemyController = new EnemyController(_enemyObjectConfig, _enemyView, _enemyAnimator);
 
             _coinConfig = Resources.Load<SpriteAnimatorConfig>("Bonuses/CoinAnimCfg");
             _coinAnimator = new SpriteAnimatorController(_coinConfig);
             _coinsController = new CoinsController(_playerView, _coinViews, _coinAnimator);
 
-           // _waterConfig = Resources.Load<SpriteAnimatorConfig>("WaterAnimCfg");
-           // _waterAnimator = new SpriteAnimatorController(_waterConfig);
-           // _waterAnimator.StartAnimation(_waterView, _spriteRenderer);
+            // _waterConfig = Resources.Load<SpriteAnimatorConfig>("WaterAnimCfg");
+            // _waterAnimator = new SpriteAnimatorController(_waterConfig);
+            // _waterAnimator.StartAnimation(_waterView, _spriteRenderer);
 
-            _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform); 
+            _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform);
             _bulletEmitterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emitterTransform);
             _paralaxController = new ParalaxController(_camera.transform, _background.transform, _middleBackground.transform, _middleFrontBackground.transform, _frontBackground.transform);
 
             _questConfiguratorController = new QuestConfiguratorController(_questView);
-            _questConfiguratorController.Init();    
-        }
+            _questConfiguratorController.Init();
 
-        void Update()
-        { 
-            _cameraController.Update();
-            _playerController.Update();
-            _enemyAnimator.Update();
-            _cannonAimController.Update();
-            _bulletEmitterController.Update();
-            _coinAnimator.Update();
-            _paralaxController.Update();
-           // _waterAnimator.Update();
+
+
+            void Update()
+            {
+                _cameraController.Update();
+                _playerController.Update();
+                _enemyAnimator.Update();
+                _cannonAimController.Update();
+                _bulletEmitterController.Update();
+                _coinAnimator.Update();
+                _paralaxController.Update();
+                _enemyController.Update();
+                // _waterAnimator.Update();
+            }
         }
     }
 }

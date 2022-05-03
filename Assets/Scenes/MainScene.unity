@@ -329,7 +329,8 @@ MonoBehaviour:
   - {fileID: 1247410261}
   - {fileID: 1061792484}
   _questView: {fileID: 671583797}
-  _playerObjectConfig: {fileID: 0}
+  _playerObjectConfig: {fileID: 11400000, guid: f340385cc6d2fd445a3b6b3a0e0958f5, type: 2}
+  _enemyObjectConfig: {fileID: 11400000, guid: ab2910c2518d8a845aa02b59a6a91360, type: 2}
 --- !u!1 &78545649
 GameObject:
   m_ObjectHideFlags: 0
@@ -6475,7 +6476,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1919397374}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3a3ed86c55d04d64daabdb8a9c559ab7, type: 3}
   m_Name: 
