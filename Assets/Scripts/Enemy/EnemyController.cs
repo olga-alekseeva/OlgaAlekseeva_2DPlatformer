@@ -17,23 +17,22 @@ namespace Platformer_2D
         private CharacterObjectConfig _enemyObjectConfig;
         private LevelObjectView _view;
         private PlayerObjectView _playerObjectView;
-        private PointOfPatrouling _patrouling;
         private SpriteAnimatorController _animatorController;
         private EnemyObjectView _enemyView;
-
-        public EnemyController(CharacterObjectConfig config, LevelObjectView view, PointOfPatrouling patrouling,
+        public List<PatrolRoute> routes = new List<PatrolRoute>();
+        public EnemyController(CharacterObjectConfig config, LevelObjectView view,
            SpriteAnimatorController animatorController)
         {
             _enemyObjectConfig = config;
             _view = view;
-            _patrouling = patrouling;
+           
             _animatorController = animatorController;
            // _animatorController.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _enemyObjectConfig.animationSpeed);
         }
         public void Update()
         {
             
-            if (Vector2.Distance(_enemyView.transform.position, _patrouling.pointOfPatrouling.position) < _patrouling.patroulRange && angry == false)
+            if (Vector2.Distance(_enemyView.transform.position,routes.position) < _patrouling.patroulRange && angry == false)
             {
                 chill = true;
             }

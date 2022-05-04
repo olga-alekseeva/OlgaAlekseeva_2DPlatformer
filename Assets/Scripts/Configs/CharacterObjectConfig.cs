@@ -10,19 +10,22 @@ namespace Platformer_2D
         [SerializeField, Range(0, 20)]
         private float _health;
 
-
         [SerializeField, Range(0, 200f)]
         private float _speed;
 
-       
-        private float _maxHealth = 20;
+        [SerializeField, Range(0, 20f)]
+        private float _maxHealth;
 
         private int _minHealth = 0;
+
         [SerializeField, Range(0, 10f)]
-        private int _fireForce;
+        private int _damageForce;
+
+        [SerializeField, Range(0, 15f)]
+        private float _jumpSpeed = 10f;
 
         private float _animationSpeed = 10f;
-        private float _jumpSpeed = 10f;
+
         private float _movingTresh = 0.1f;
         private float _jumpTresh = 1f;
 
@@ -35,6 +38,6 @@ namespace Platformer_2D
         public float movingTresh { get => _movingTresh;}
         public float jumpTresh { get => _jumpTresh; }
 
-        public float fireForce { get => _fireForce; }
+        public float fireForce { get => _damageForce; }
     }
 }
