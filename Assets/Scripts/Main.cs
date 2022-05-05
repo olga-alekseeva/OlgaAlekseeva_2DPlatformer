@@ -13,17 +13,13 @@ namespace Platformer_2D
         [SerializeField] private SpriteAnimatorConfig _playerConfig;
         [SerializeField] private SpriteAnimatorConfig _coinConfig;
         [SerializeField] private SpriteAnimatorConfig _enemyConfig;
-       // [SerializeField] private int _playerAnimationSpeed = 15;
-        //[SerializeField] private int _enemyAnimationSpeed = 3;
         [SerializeField] private LevelObjectView _playerView;
         [SerializeField] private LevelObjectView _enemyView;
-        //[SerializeField] private LevelObjectView _waterView;
         [SerializeField] private CannonView _cannonView;
         [SerializeField] private List<LevelObjectView> _coinViews;
         [SerializeField] private QuestView _questView;
         [SerializeField]private CharacterObjectConfig _playerObjectConfig;
         [SerializeField] private CharacterObjectConfig _enemyObjectConfig;
-        // [SerializeField] private PlayerObjectView _playerView;
         [SerializeField] private GeneratorLevelView _genView;
 
         private SpriteAnimatorController _enemyAnimator;
@@ -36,9 +32,6 @@ namespace Platformer_2D
         private CoinsController _coinsController;
         private ParalaxController _paralaxController;
         private GeneratorController _generatorController;
-
-      //  [SerializeField] private SpriteAnimatorConfig _waterConfig;
-       // private SpriteAnimatorController _waterAnimator; 
         private QuestConfiguratorController _questConfiguratorController;
 
         private void Awake()
@@ -60,10 +53,6 @@ namespace Platformer_2D
             _coinAnimator = new SpriteAnimatorController(_coinConfig);
             _coinsController = new CoinsController(_playerView, _coinViews, _coinAnimator);
 
-           // _waterConfig = Resources.Load<SpriteAnimatorConfig>("WaterAnimCfg");
-           // _waterAnimator = new SpriteAnimatorController(_waterConfig);
-           // _waterAnimator.StartAnimation(_waterView, _spriteRenderer);
-
             _cannonAimController = new CannonAimController(_cannonView._muzzleTransform, _playerView._transform); 
             _bulletEmitterController = new BulletEmitterController(_cannonView._bullets, _cannonView._emitterTransform);
             _paralaxController = new ParalaxController(_camera.transform, _background.transform, _middleBackground.transform, _middleFrontBackground.transform, _frontBackground.transform);
@@ -84,7 +73,6 @@ namespace Platformer_2D
             _bulletEmitterController.Update();
             _coinAnimator.Update();
             _paralaxController.Update();
-           // _waterAnimator.Update();
         }
     }
 }
