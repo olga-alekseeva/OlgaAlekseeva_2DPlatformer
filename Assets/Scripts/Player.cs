@@ -17,7 +17,7 @@ namespace Platformer_2D
 
         public float fireForce { get; set; }
 
-        public float animationSpeed { get; set; }
+        
 
         public float jumpSpeed { get; set; }
 
@@ -32,7 +32,7 @@ namespace Platformer_2D
         this.maxHealth = config.maxHealth;  
         this.minHealth = config.minHealth;
         this.fireForce = config.fireForce;
-        this.animationSpeed = config.animationSpeed;
+        
         this.jumpSpeed = config.jumpSpeed;
         this.movingTresh = config.movingTresh;
         this.jumpTresh = config.jumpTresh;

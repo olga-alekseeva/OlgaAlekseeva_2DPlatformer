@@ -24,7 +24,7 @@ namespace Platformer_2D
         [SerializeField, Range(0, 15f)]
         private float _jumpSpeed = 10f;
 
-        private float _animationSpeed = 10f;
+        
 
         private float _movingTresh = 0.1f;
         private float _jumpTresh = 1f;
@@ -33,7 +33,7 @@ namespace Platformer_2D
         public float speed { get => _speed; set => _speed = value; }
         public float maxHealth { get => _maxHealth;}
         public float minHealth { get => _minHealth;}
-        public float animationSpeed { get => _animationSpeed;}
+        
         public float jumpSpeed { get => _jumpSpeed; }
         public float movingTresh { get => _movingTresh;}
         public float jumpTresh { get => _jumpTresh; }

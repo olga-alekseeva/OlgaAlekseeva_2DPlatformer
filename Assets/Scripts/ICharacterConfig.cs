@@ -11,7 +11,7 @@ namespace Platformer_2D
         public float maxHealth { get; }
         public float minHealth { get; }
         public float fireForce { get; }
-        public float animationSpeed { get; }
+        
         public float jumpSpeed { get; }
         public float movingTresh { get; }
         public float jumpTresh { get; }

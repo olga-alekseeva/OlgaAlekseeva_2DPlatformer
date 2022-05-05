@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Platformer_2D
 {
+   
     public enum AnimState
     {
         Idle = 0,
@@ -23,5 +24,7 @@ namespace Platformer_2D
         }
 
         public List<SpriteSequence> Sequences = new List<SpriteSequence>();
+        [SerializeField, Range(0, 20f)]
+        public float animationSpeed;
     }
 }

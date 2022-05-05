@@ -12,7 +12,7 @@ namespace Platformer_2D
         bool angry = false;
         bool goBack = false;
         bool movingRight = true;
-       
+
 
         private CharacterObjectConfig _enemyObjectConfig;
         private LevelObjectView _view;
@@ -25,71 +25,73 @@ namespace Platformer_2D
         {
             _enemyObjectConfig = config;
             _view = view;
-           
+
             _animatorController = animatorController;
-           // _animatorController.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _enemyObjectConfig.animationSpeed);
+            // _animatorController.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _enemyObjectConfig.animationSpeed);
         }
         public void Update()
         {
-            
-            if (Vector2.Distance(_enemyView.transform.position,routes.position) < _patrouling.patroulRange && angry == false)
-            {
-                chill = true;
-            }
-            if (Vector2.Distance(_enemyView.transform.position, _playerObjectView._transform.position) < stoppingDistance)
-            {
-                angry = true;
-                chill = false;
-                goBack = false;
-            }
-            if (Vector2.Distance(_enemyView.transform.position, _playerObjectView._transform.position) > stoppingDistance)
-            {
-                goBack = true;
-                angry = false;
-            }
-            if (chill == true)
-            {
-                Chill();
-            }
-            else if (angry == true)
-            {
-                angry = true;
-            }
-            else if (goBack == true)
-            {
-                GoBack();
-            }
 
-        }
-        private void Chill()
-        {
-            if (_enemyView.transform.position.x > _patrouling.pointOfPatrouling.position.x + _patrouling.patroulRange)
-            {
-                movingRight = false;
-            }
-            else if (_enemyView.transform.position.x < _patrouling.pointOfPatrouling.position.x - _patrouling.patroulRange)
-            {
-                movingRight = true;
-            }
-            if (movingRight)
-            {
-                _enemyView.transform.position = new Vector2(_enemyView.transform.position.x + _enemyObjectConfig.speed * Time.deltaTime, _enemyView.transform.position.y);
-            }
-            else
-            {
-                _enemyView.transform.position = new Vector2(_enemyView.transform.position.x - _enemyObjectConfig.speed * Time.deltaTime, _enemyView.transform.position.y);
-            }
+            //        if (Vector2.Distance(_enemyView.transform.position,routes.position) < _patrouling.patroulRange && angry == false)
+            //        {
+            //            chill = true;
+            //        }
+            //        if (Vector2.Distance(_enemyView.transform.position, _playerObjectView._transform.position) < stoppingDistance)
+            //        {
+            //            angry = true;
+            //            chill = false;
+            //            goBack = false;
+            //        }
+            //        if (Vector2.Distance(_enemyView.transform.position, _playerObjectView._transform.position) > stoppingDistance)
+            //        {
+            //            goBack = true;
+            //            angry = false;
+            //        }
+            //        if (chill == true)
+            //        {
+            //            Chill();
+            //        }
+            //        else if (angry == true)
+            //        {
+            //            angry = true;
+            //        }
+            //        else if (goBack == true)
+            //        {
+            //            GoBack();
+            //        }
 
-        }
-        private void Angry()
-        {
-            float newSpeed = _enemyObjectConfig.speed * 2;
-            _enemyView.transform.position = Vector2.MoveTowards(_enemyView.transform.position, _playerObjectView._transform.position, newSpeed * Time.deltaTime);
-        }
-        private void GoBack()
-        {
-            _enemyView.transform.position = Vector2.MoveTowards(_enemyView.transform.position, _patrouling.pointOfPatrouling.position, _enemyObjectConfig.speed * Time.deltaTime);
+            //    }
+            //    private void Chill()
+            //    {
+            //        if (_enemyView.transform.position.x > _patrouling.pointOfPatrouling.position.x + _patrouling.patroulRange)
+            //        {
+            //            movingRight = false;
+            //        }
+            //        else if (_enemyView.transform.position.x < _patrouling.pointOfPatrouling.position.x - _patrouling.patroulRange)
+            //        {
+            //            movingRight = true;
+            //        }
+            //        if (movingRight)
+            //        {
+            //            _enemyView.transform.position = new Vector2(_enemyView.transform.position.x + _enemyObjectConfig.speed * Time.deltaTime, _enemyView.transform.position.y);
+            //        }
+            //        else
+            //        {
+            //            _enemyView.transform.position = new Vector2(_enemyView.transform.position.x - _enemyObjectConfig.speed * Time.deltaTime, _enemyView.transform.position.y);
+            //        }
 
+            //    }
+            //    private void Angry()
+            //    {
+            //        float newSpeed = _enemyObjectConfig.speed * 2;
+            //        _enemyView.transform.position = Vector2.MoveTowards(_enemyView.transform.position, _playerObjectView._transform.position, newSpeed * Time.deltaTime);
+            //    }
+            //    private void GoBack()
+            //    {
+            //        _enemyView.transform.position = Vector2.MoveTowards(_enemyView.transform.position, _patrouling.pointOfPatrouling.position, _enemyObjectConfig.speed * Time.deltaTime);
+
+            //    }
+            //}
         }
     }
 }

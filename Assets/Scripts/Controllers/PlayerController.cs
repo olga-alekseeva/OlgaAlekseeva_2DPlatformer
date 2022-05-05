@@ -15,12 +15,14 @@ namespace Platformer_2D
         private LevelObjectView _view;
         private SpriteAnimatorController _animatorConroller;
         private ContactPooler _contactPooler;
-        public PlayerController(LevelObjectView view, SpriteAnimatorController spriteAnimator, CharacterObjectConfig playerObjectConfig)
+        SpriteAnimatorConfig _animatorConfig;
+        public PlayerController(LevelObjectView view, SpriteAnimatorController spriteAnimator, CharacterObjectConfig playerObjectConfig, SpriteAnimatorConfig animatorConfig)
         {
             _playerObjectConfig = playerObjectConfig;
             _view = view;
             _animatorConroller = spriteAnimator;
-            _animatorConroller.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _playerObjectConfig.animationSpeed);
+            _animatorConfig = animatorConfig;
+            _animatorConroller.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _animatorConfig.animationSpeed);
              _contactPooler = new ContactPooler(_view._collider);
 
         }
@@ -38,7 +40,7 @@ namespace Platformer_2D
                 }
             if (_contactPooler.IsGrounded)
             {
-                _animatorConroller.StartAnimation(_view._spriteRenderer, Move ? AnimState.Run : AnimState.Idle, true, _playerObjectConfig.animationSpeed);
+                _animatorConroller.StartAnimation(_view._spriteRenderer, Move ? AnimState.Run : AnimState.Idle, true, _animatorConfig.animationSpeed);
 
                 if (_doJump && _view._rb.velocity.y <= _playerObjectConfig.jumpTresh)
                 {
@@ -49,7 +51,7 @@ namespace Platformer_2D
             {
                 if (Mathf.Abs(_view._rb.velocity.y) > _playerObjectConfig.jumpTresh)
                 {
-                    _animatorConroller.StartAnimation(_view._spriteRenderer, AnimState.Jump, true, _playerObjectConfig.animationSpeed);
+                    _animatorConroller.StartAnimation(_view._spriteRenderer, AnimState.Jump, true, _animatorConfig.animationSpeed);
                 }
 
             }

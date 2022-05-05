@@ -12,11 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd5ad5c130daf246bd9f054eda4cfce, type: 3}
   m_Name: EnemyObjectCfg
   m_EditorClassIdentifier: 
-  health: 20
-  speed: 150
-  MaxHealth: 20
-  MinHealth: 0
-  animationSpeed: 10
-  jumpSpeed: 0
-  movingTresh: 0
-  jumpTresh: 0
+  _health: 20
+  _speed: 20
+  _maxHealth: 20
+  _damageForce: 6
+  _jumpSpeed: 10
