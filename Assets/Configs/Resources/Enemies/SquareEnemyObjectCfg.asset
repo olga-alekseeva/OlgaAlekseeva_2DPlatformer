@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6bd5ad5c130daf246bd9f054eda4cfce, type: 3}
-  m_Name: PlayerObjectCfg
+  m_Name: SquareEnemyObjectCfg
   m_EditorClassIdentifier: 
-  _health: 4.33
-  _speed: 150
-  _fireForce: 0
+  _health: 16.5
+  _speed: 37
+  _maxHealth: 20
+  _damageForce: 4
+  _jumpSpeed: 10

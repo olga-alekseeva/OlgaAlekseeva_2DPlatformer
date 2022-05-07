@@ -51,3 +51,4 @@ MonoBehaviour:
   - Track: 2
     Sprites:
     - {fileID: 21300000, guid: ac275666a28f0fa40876859dbb51e5e1, type: 3}
+  animationSpeed: 13.88

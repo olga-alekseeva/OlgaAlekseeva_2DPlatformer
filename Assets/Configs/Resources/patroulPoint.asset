@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bd5ad5c130daf246bd9f054eda4cfce, type: 3}
-  m_Name: PlayerObjectCfg
+  m_Script: {fileID: 11500000, guid: 5563b4b439ea85248ba6cab21d876b88, type: 3}
+  m_Name: patroulPoint
   m_EditorClassIdentifier: 
-  _health: 4.33
-  _speed: 150
-  _fireForce: 0
+  _pointOfPatrouling: {fileID: 8901968701381659612, guid: c9f9b9e5ce0e17c4dabc1639b84ed33b, type: 3}
+  _patroulRange: 22.4

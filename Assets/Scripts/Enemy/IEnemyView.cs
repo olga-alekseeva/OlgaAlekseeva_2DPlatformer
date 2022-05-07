@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Platformer_2D
 {
-    public interface IEnemyView : ICloneable
+    public interface IEnemyView 
     {
         public Transform transform { get; }
 
