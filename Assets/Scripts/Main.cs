@@ -33,6 +33,7 @@ namespace Platformer_2D
         private ParalaxController _paralaxController;
         private GeneratorController _generatorController;
         private QuestConfiguratorController _questConfiguratorController;
+        private EnemiesConfigurator _enemiesConfigurator;
 
         private void Awake()
         {
@@ -61,9 +62,11 @@ namespace Platformer_2D
             _generatorController.Init();
 
             _questConfiguratorController = new QuestConfiguratorController(_questView);
-            _questConfiguratorController.Init();    
-        }
+            _questConfiguratorController.Init();
 
+
+        }
+       
         void Update()
         { 
             _cameraController.Update();
