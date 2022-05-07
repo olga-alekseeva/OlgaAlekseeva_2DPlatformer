@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd92abb4d5714d741916196380254745, type: 3}
+  m_Name: EnemyPatrolRoute
+  m_EditorClassIdentifier: 
+  minDistanceToTarget: 7.54
+  waypoints:
+  - {fileID: 181356247888551395, guid: 8fa84282daaed0a4fb70f51482395d8c, type: 3}
+  - {fileID: 5003344767156753086, guid: 0995730eda367a3439fd7402e7860667, type: 3}
