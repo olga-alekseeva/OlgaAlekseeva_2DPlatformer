@@ -1,18 +1,24 @@
-using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class QuestStoryController : MonoBehaviour
+namespace Platformer_2D
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public class QuestStoryController : IQuestStory
 
-    // Update is called once per frame
-    void Update()
     {
-        
+        private List<IQuest> _questCollection = new List<IQuest>();
+        public bool IsDone => _questCollection.All(value => value.IsCompleted);
+
+        public QuestStoryController(List<IQuest> questCollection)
+        {
+            _questCollection = questCollection;
+
+        }
+
+        public void Dispose()
+        {
+            
+        }
     }
 }
