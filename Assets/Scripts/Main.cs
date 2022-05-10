@@ -21,6 +21,7 @@ namespace Platformer_2D
         [SerializeField]private CharacterObjectConfig _playerObjectConfig;
         [SerializeField] private CharacterObjectConfig _enemyObjectConfig;
         [SerializeField] private GeneratorLevelView _genView;
+        [SerializeField] private UIView _UIView;
 
         private SpriteAnimatorController _enemyAnimator;
         private SpriteAnimatorController _playerAnimator;
@@ -34,6 +35,7 @@ namespace Platformer_2D
         private GeneratorController _generatorController;
         private QuestConfiguratorController _questConfiguratorController;
         private EnemiesConfigurator _enemiesConfigurator;
+        private SetHealthValueController _setHealthValueController;
 
         private void Awake()
         {
@@ -64,11 +66,14 @@ namespace Platformer_2D
             _questConfiguratorController = new QuestConfiguratorController(_questView);
             _questConfiguratorController.Init();
 
+            _setHealthValueController = new SetHealthValueController(_UIView, _playerObjectConfig);
+           
 
         }
        
         void Update()
         { 
+            
             _cameraController.Update();
             _playerController.Update();
             _enemyAnimator.Update();
@@ -76,6 +81,7 @@ namespace Platformer_2D
             _bulletEmitterController.Update();
             _coinAnimator.Update();
             _paralaxController.Update();
+            _setHealthValueController.Update();
         }
     }
 }
