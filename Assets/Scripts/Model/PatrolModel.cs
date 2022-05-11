@@ -5,39 +5,39 @@ using UnityEngine;
 
 namespace Platformer_2D
 {
-    [Serializable]
-    public struct PatrolConfig
-    {
-        public float speed;
-        public float minDistanceToTarget;
-        public Transform[] waypoints;
-    }
+    //[Serializable]
+    //public struct PatrolConfig
+    //{
+    //    public float speed;
+    //    public float minDistanceToTarget;
+    //    public Transform[] waypoints;
+    //}
     public class PatrolModel
     {
-        private PatrolConfig _patrolConfig;
+        private PatrolView _patrolView;
         private Transform _target;
         private int _currentPointIndex;
 
-        public PatrolModel(PatrolConfig patrolConfig)
+        public PatrolModel(PatrolView patrolView)
         {
-            _patrolConfig = patrolConfig;
+            _patrolView = patrolView;
             _target = GetNextWaypoint();
             
         }
         public Vector2 CalculateVelocity(Vector2 fromPosition)
         {
             var sqrDistance = Vector2.SqrMagnitude((Vector2)_target.position - fromPosition);
-            if(sqrDistance <= _patrolConfig.minDistanceToTarget)
+            if(sqrDistance <= _patrolView.minDistanceToTarget)
             {
                 _target = GetNextWaypoint();
             }
             var direction = ((Vector2)_target.position - fromPosition).normalized;
-            return _patrolConfig.speed * direction;
+            return _patrolView.speed * direction;
         }
         private Transform GetNextWaypoint()
         {
-            _currentPointIndex = (_currentPointIndex + 1) % _patrolConfig.waypoints.Length; 
-            return _patrolConfig.waypoints[_currentPointIndex];
+            _currentPointIndex = (_currentPointIndex + 1) % _patrolView.waypoints.Length; 
+            return _patrolView.waypoints[_currentPointIndex];
         }
        
     }

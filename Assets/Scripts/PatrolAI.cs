@@ -10,6 +10,7 @@ namespace Platformer_2D
         private LevelObjectView _levelObjectView;
         private PatrolModel _patrolModel;
         private CharacterObjectConfig _characterObjectConfig;
+        private PatrolView _patrolView;
 
         public PatrolAI(LevelObjectView levelObjectView, PatrolModel patrolModel)
         {

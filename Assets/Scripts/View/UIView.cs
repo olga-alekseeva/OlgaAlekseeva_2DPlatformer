@@ -8,6 +8,7 @@ namespace Platformer_2D
     public class UIView : MonoBehaviour
     {
         [SerializeField] public Slider _healthValueSlider;
+        [SerializeField] public Button _MenuInGameButton;
 
     }
 }

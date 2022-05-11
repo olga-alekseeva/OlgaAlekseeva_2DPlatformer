@@ -9,6 +9,7 @@ namespace Platformer_2D
     {
         private UIView _healhView;
         private CharacterObjectConfig _charObjectConfig;
+        private RestartGame _restartGame;
         public float currentHealth;
 
         public SetHealthValueController (UIView healhView, CharacterObjectConfig charObjectConfig)
@@ -16,18 +17,19 @@ namespace Platformer_2D
             _healhView = healhView;
             _charObjectConfig = charObjectConfig;
             currentHealth = _charObjectConfig.maxHealth;
+            _restartGame = new RestartGame ();
         }
       
         public void Update()
         {
-          
-            if (Input.GetKeyDown(KeyCode.LeftShift))
+          if(Input.GetKeyDown (KeyCode.F))
             {
                 Damage(5);
             }
+           
             if (_healhView._healthValueSlider.value <= 0)
             {
-                Debug.Log("You died");
+                _restartGame.RestartLevel();
             }
         }
         public void SetMaxHealth(CharacterObjectConfig characterObjectConfig)
