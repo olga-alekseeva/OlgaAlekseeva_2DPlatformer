@@ -2,9 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PatrolView : MonoBehaviour
+namespace Platformer_2D
 {
-    [SerializeField] public Transform[] waypoints;
-    public float speed;
-    public float minDistanceToTarget;
+    public class PatrolView : MonoBehaviour
+    {
+        [SerializeField] public Transform enemyTransform;
+        [SerializeField] public Transform pointOfPatrol;
+        [SerializeField, Range(-50f, 50f)] public float patrolDistance;
+        public float stoppingDistance;
+        
+
+
+    }
 }

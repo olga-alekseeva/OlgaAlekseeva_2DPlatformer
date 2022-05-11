@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd5ad5c130daf246bd9f054eda4cfce, type: 3}
   m_Name: PlayerObjectCfg
   m_EditorClassIdentifier: 
-  _health: 4.33
-  _speed: 150
+  _health: 20
+  _speed: 200
   _maxHealth: 20
   _damageForce: 10
   _jumpSpeed: 10

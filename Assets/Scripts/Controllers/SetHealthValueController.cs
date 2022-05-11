@@ -16,12 +16,12 @@ namespace Platformer_2D
         {
             _healhView = healhView;
             _charObjectConfig = charObjectConfig;
-            currentHealth = _charObjectConfig.maxHealth;
             _restartGame = new RestartGame ();
         }
       
         public void Update()
         {
+            currentHealth = _charObjectConfig.health;
           if(Input.GetKeyDown (KeyCode.F))
             {
                 Damage(5);

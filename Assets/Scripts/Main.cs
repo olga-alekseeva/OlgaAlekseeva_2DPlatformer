@@ -34,7 +34,7 @@ namespace Platformer_2D
         private ParalaxController _paralaxController;
         private GeneratorController _generatorController;
         private QuestConfiguratorController _questConfiguratorController;
-        private EnemiesConfigurator _enemiesConfigurator;
+      //  private EnemiesConfigurator _enemiesConfigurator;
         private SetHealthValueController _setHealthValueController;
 
         private void Awake()

@@ -7,13 +7,13 @@ namespace Platformer_2D
     public class EnemyBehaviour : MonoBehaviour, IEnemyBehaviour
    
     {
-        public event Action<IEnemy, Collision> actionOnColliderEnter;
-        public IEnemy enemy { get;  set; }
+    //    public event Action<IEnemy, Collision> actionOnColliderEnter;
+    //    public IEnemy enemy { get;  set; }
 
-        public void OnCollisionEnter(Collision collision)
-        {
-            actionOnColliderEnter?.Invoke(enemy, collision);
-        }
+    //    public void OnCollisionEnter(Collision collision)
+    //    {
+    //        actionOnColliderEnter?.Invoke(enemy, collision);
+    //    }
 
     }
 }
