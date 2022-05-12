@@ -329,7 +329,7 @@ MonoBehaviour:
   _genView: {fileID: 808156851}
   _UIView: {fileID: 1782659821}
   _playerObjectView: {fileID: 609043576}
-  _patrolView: {fileID: 1119126388}
+  _patrolView: {fileID: 0}
 --- !u!1 &78545649
 GameObject:
   m_ObjectHideFlags: 0
@@ -4685,8 +4685,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a74878cf500efa4baa4714a56b508e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _characterObjectConfig: {fileID: 11400000, guid: fd2e6072b37466f4c8b07be6a7db7e4d, type: 2}
-  _enemyTransformPosition: {fileID: 1119126387}
+  _characterObjectConfig: {fileID: 0}
+  _enemyTransformPosition: {fileID: 0}
 --- !u!50 &1119126386
 Rigidbody2D:
   serializedVersion: 4
@@ -4708,26 +4708,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!4 &1119126387 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4741208189133262685, guid: ede1a2121183aa94e8acdd333c8cae96, type: 3}
-  m_PrefabInstance: {fileID: 4741208188287820124}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1119126388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1119126381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9073c601ff6df804aa27f6d05df247f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointOfPatrol: {fileID: 11023708}
-  patrolDistance: 45.5
-  stoppingDistance: 2.82
 --- !u!1 &1120560279
 GameObject:
   m_ObjectHideFlags: 0

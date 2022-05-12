@@ -6,7 +6,6 @@ namespace Platformer_2D
 {
     public class PatrolController
     {
-        private PatrolView _patrolView;
         private PlayerObjectView _playerObjectView;
         private CharacterObjectConfig _enemyObjectConfig;
         private EnemyObjectView _enemyObjectView;
@@ -18,26 +17,25 @@ namespace Platformer_2D
         
 
         public PatrolController
-            (PatrolView patrolView,
-            PlayerObjectView playerObjectView,
-            CharacterObjectConfig enemyObjectConfig)
+            (PlayerObjectView playerObjectView,CharacterObjectConfig enemyObjectConfig, EnemyObjectView enemyObjectView )
         {
-            _patrolView = patrolView;   
+            
             _playerObjectView = playerObjectView;
             _enemyObjectConfig = enemyObjectConfig;
+            _enemyObjectView = enemyObjectView;
         }
         
        public void Update()
         {
-            if(Vector2.Distance(_enemyObjectView._enemyTransformPosition.transform.position, _patrolView.pointOfPatrol.position) < 
-                _patrolView.patrolDistance && attack == false)
+            if(Vector2.Distance(_enemyObjectView._enemyTransformPosition.transform.position, _enemyObjectView.pointOfPatrol.position) <
+                _enemyObjectView.patrolDistance && attack == false)
             {
                 patrouling = true;
             }
             if(Vector2.Distance(_enemyObjectView.
                 _enemyTransformPosition.transform.position,
                 _playerObjectView._transform.position) 
-                < _patrolView.stoppingDistance)
+                < _enemyObjectView.stoppingDistance)
             {
                 attack = true;
                 patrouling = false;
@@ -45,8 +43,8 @@ namespace Platformer_2D
             }
             if(Vector2.Distance(_enemyObjectView.
                 _enemyTransformPosition.transform.position, 
-                _playerObjectView._transform.position)> 
-                _patrolView.stoppingDistance)
+                _playerObjectView._transform.position)>
+                _enemyObjectView.stoppingDistance)
             {
                 goOnPatrolPoint = true;
                 attack = false;
@@ -70,16 +68,16 @@ namespace Platformer_2D
         {
             if(_enemyObjectView._enemyTransformPosition.
                 transform.position.x >
-                _patrolView.pointOfPatrol.position.x
-                + _patrolView.patrolDistance)
+                _enemyObjectView.pointOfPatrol.position.x
+                + _enemyObjectView.patrolDistance)
             {
 
                 movingSide = false;
             }
             else if(_enemyObjectView.
                 _enemyTransformPosition.transform.
-                position.x < _patrolView.pointOfPatrol.
-                position.x - _patrolView.patrolDistance)
+                position.x < _enemyObjectView.pointOfPatrol.
+                position.x - _enemyObjectView.patrolDistance)
             {
                 movingSide=true;
             }
@@ -113,7 +111,7 @@ namespace Platformer_2D
                 (_enemyObjectView._enemyTransformPosition.
                 transform.position, 
                 _playerObjectView._transform.position,
-                _enemyObjectConfig.speed * Time.deltaTime*2);
+                _enemyObjectConfig.speed * Time.deltaTime);
 
         }
         void GoOnPatrolPoint()
@@ -122,7 +120,7 @@ namespace Platformer_2D
                 transform.position =
                 Vector2.MoveTowards
                 (_enemyObjectView._enemyTransformPosition.
-                transform.position, _patrolView.pointOfPatrol.
+                transform.position, _enemyObjectView.pointOfPatrol.
                 position, 
                 _enemyObjectConfig.speed * Time.deltaTime);
         }
