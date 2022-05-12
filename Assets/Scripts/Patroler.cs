@@ -24,17 +24,23 @@ namespace Platformer_2D
 
         void Update()
         {
-            if (Vector2.Distance(transform.position, point.position) < positionOfPatrol && angry == false)
+            if (Vector2.Distance
+            (transform.position, point.position) 
+                < positionOfPatrol && angry == false)
             {
                 chill = true;
             }
-            if (Vector2.Distance(transform.position, player.position) < stoppingDistance)
+            if (Vector2.Distance
+            (transform.position, player.position)
+                < stoppingDistance)
             {
                 angry = true;
                 chill = false;
                 goBack = false;
             }
-            if (Vector2.Distance(transform.position, player.position) > stoppingDistance)
+            if (Vector2.Distance
+            (transform.position, player.position)
+                > stoppingDistance)
             {
                 goBack = true;
                 angry = false;
@@ -45,7 +51,7 @@ namespace Platformer_2D
             }
             else if (angry == true)
             {
-                angry = true;
+               Angry();
             }
             else if (goBack == true)
             {
@@ -55,33 +61,49 @@ namespace Platformer_2D
 
         void Chill()
         {
-            if (transform.position.x > point.position.x + positionOfPatrol)
+            if (transform.position.x > point.position.x 
+                + positionOfPatrol)
             {
                 movingRight = false;
 
             }
-            else if (transform.position.x < point.position.x - positionOfPatrol)
+            else if (transform.position.x < point.position.x 
+                - positionOfPatrol)
             {
                 movingRight = true;
             }
             if (movingRight)
             {
-                transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
+                transform.position = 
+                    new Vector2
+                    (transform.position.x 
+                    + speed * Time.deltaTime,
+                    transform.position.y);
             }
             else
             {
-                transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
+                transform.position = 
+                    new Vector2
+                    (transform.position.x - 
+                    speed * Time.deltaTime,
+                    transform.position.y);
             }
         }
 
         void Angry()
         {
-            transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+            transform.position = 
+                Vector2.MoveTowards
+                (transform.position, player.position, 
+                speed * Time.deltaTime);
             speed = 5;
         }
         void GoBack()
         {
-            transform.position = Vector2.MoveTowards(transform.position, point.position, speed * Time.deltaTime);
+            transform.position = 
+                Vector2.MoveTowards
+                (transform.position, point.position,
+                speed * Time.deltaTime);
 
         }
     }

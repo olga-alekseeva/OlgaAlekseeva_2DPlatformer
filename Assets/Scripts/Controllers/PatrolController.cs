@@ -9,53 +9,122 @@ namespace Platformer_2D
         private PatrolView _patrolView;
         private PlayerObjectView _playerObjectView;
         private CharacterObjectConfig _enemyObjectConfig;
+        private EnemyObjectView _enemyObjectView;
 
         bool movingSide = true;
         bool patrouling = false;
-        bool angry = false;
-        bool goBack = false;
+        bool attack = false;
+        bool goOnPatrolPoint = false;
+        
 
-        public PatrolController(PatrolView patrolView, PlayerObjectView playerObjectView, CharacterObjectConfig enemyObjectConfig)
+        public PatrolController
+            (PatrolView patrolView,
+            PlayerObjectView playerObjectView,
+            CharacterObjectConfig enemyObjectConfig)
         {
             _patrolView = patrolView;   
             _playerObjectView = playerObjectView;
             _enemyObjectConfig = enemyObjectConfig;
-            _playerObjectView._transform = GameObject.FindGameObjectWithTag("Player").transform;
         }
-
-        void Update()
+        
+       public void Update()
         {
-
+            if(Vector2.Distance(_enemyObjectView._enemyTransformPosition.transform.position, _patrolView.pointOfPatrol.position) < 
+                _patrolView.patrolDistance && attack == false)
+            {
+                patrouling = true;
+            }
+            if(Vector2.Distance(_enemyObjectView.
+                _enemyTransformPosition.transform.position,
+                _playerObjectView._transform.position) 
+                < _patrolView.stoppingDistance)
+            {
+                attack = true;
+                patrouling = false;
+                goOnPatrolPoint = false;
+            }
+            if(Vector2.Distance(_enemyObjectView.
+                _enemyTransformPosition.transform.position, 
+                _playerObjectView._transform.position)> 
+                _patrolView.stoppingDistance)
+            {
+                goOnPatrolPoint = true;
+                attack = false;
+            }
+            if(patrouling == true)
+            {
+                Patrouling();
+            }
+            else if (attack == true)
+            {
+                Attack();
+            }
+            else if (goOnPatrolPoint == true)
+            {
+                GoOnPatrolPoint();
+            }
         }
+
 
         void Patrouling()
         {
-            if(_patrolView.enemyTransform.position.x > _patrolView.pointOfPatrol.position.x + _patrolView.patrolDistance)
+            if(_enemyObjectView._enemyTransformPosition.
+                transform.position.x >
+                _patrolView.pointOfPatrol.position.x
+                + _patrolView.patrolDistance)
             {
 
-                movingSide = true;
+                movingSide = false;
             }
-            else if(_patrolView.enemyTransform.position.x < _patrolView.pointOfPatrol.position.x - _patrolView.patrolDistance)
+            else if(_enemyObjectView.
+                _enemyTransformPosition.transform.
+                position.x < _patrolView.pointOfPatrol.
+                position.x - _patrolView.patrolDistance)
             {
-                movingSide=false;
+                movingSide=true;
             }
             if(movingSide)
             {
-                _patrolView.enemyTransform.position = new Vector2(_patrolView.enemyTransform.position.x + _enemyObjectConfig.speed * Time.deltaTime, _patrolView.pointOfPatrol.position.y);
+                _enemyObjectView._enemyTransformPosition.
+                    transform.position = new Vector2
+                    (_enemyObjectView._enemyTransformPosition.
+                    transform.position.x + _enemyObjectConfig.
+                    speed * Time.deltaTime, _enemyObjectView.
+                    _enemyTransformPosition.
+                    transform.position.y);
             }
             else
             {
-                _patrolView.enemyTransform.position = new Vector2(_patrolView.enemyTransform.position.x + _enemyObjectConfig.speed * Time.deltaTime, _patrolView.pointOfPatrol.position.y);
+                _enemyObjectView._enemyTransformPosition.
+                    transform.position =
+                    new Vector2(_enemyObjectView.
+                    _enemyTransformPosition.transform.
+                    position.x - _enemyObjectConfig.speed *
+                    Time.deltaTime, _enemyObjectView.
+                    _enemyTransformPosition.
+                    transform.position.y);
             }
         }
         void Attack()
         {
-            _patrolView.pointOfPatrol.position = Vector2.MoveTowards(_patrolView.enemyTransform.position, _playerObjectView._transform.position, _enemyObjectConfig.speed * Time.deltaTime*2);
+            _enemyObjectView._enemyTransformPosition.
+                transform.position = 
+                Vector2.MoveTowards
+                (_enemyObjectView._enemyTransformPosition.
+                transform.position, 
+                _playerObjectView._transform.position,
+                _enemyObjectConfig.speed * Time.deltaTime*2);
 
         }
         void GoOnPatrolPoint()
         {
-            _patrolView.pointOfPatrol.position = Vector2.MoveTowards(_patrolView.enemyTransform.position, _patrolView.pointOfPatrol.position, _enemyObjectConfig.speed * Time.deltaTime);
+            _enemyObjectView._enemyTransformPosition.
+                transform.position =
+                Vector2.MoveTowards
+                (_enemyObjectView._enemyTransformPosition.
+                transform.position, _patrolView.pointOfPatrol.
+                position, 
+                _enemyObjectConfig.speed * Time.deltaTime);
         }
     }
 }

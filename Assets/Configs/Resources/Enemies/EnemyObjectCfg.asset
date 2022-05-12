@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: EnemyObjectCfg
   m_EditorClassIdentifier: 
   _health: 20
-  _speed: 20
+  _speed: 107
   _maxHealth: 20
   _damageForce: 6
   _jumpSpeed: 10
