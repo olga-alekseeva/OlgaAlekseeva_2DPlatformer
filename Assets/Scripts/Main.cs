@@ -39,7 +39,7 @@ namespace Platformer_2D
         private GeneratorController _generatorController;
         private QuestConfiguratorController _questConfiguratorController;
         private SetHealthValueController _setHealthValueController;
-        PatrolController _patrolController;
+        private EnemyController _enemyController;
         private void Start()
         {
            // Player = GameObject.FindGameObjectWithTag("Player");
@@ -58,7 +58,7 @@ namespace Platformer_2D
             _enemyConfig = Resources.Load<SpriteAnimatorConfig>("Enemies/EnemyAnimCfg");
             _enemyAnimator = new SpriteAnimatorController(_enemyConfig);
             _enemyAnimator.StartAnimation(_enemyView._spriteRenderer, AnimState.Idle, true, _enemyConfig.animationSpeed);
-            _patrolController = new PatrolController(_playerObjectView, _enemyObjectConfig, _enemyObjectView);
+            _enemyController = new EnemyController(_playerObjectView, _enemyObjectConfig, _enemyObjectView);
 
             _coinConfig = Resources.Load<SpriteAnimatorConfig>("Bonuses/CoinAnimCfg");
             _coinAnimator = new SpriteAnimatorController(_coinConfig);
@@ -90,7 +90,7 @@ namespace Platformer_2D
             _coinAnimator.Update();
             _paralaxController.Update();
             _setHealthValueController.Update();
-            _patrolController.Update();
+            _enemyController.Update();
         }
     }
 }

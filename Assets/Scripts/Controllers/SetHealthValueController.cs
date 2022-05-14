@@ -43,7 +43,7 @@ namespace Platformer_2D
         {
             _healhView._healthValueSlider.value = currentHealth;
         }
-        void Damage(float damage)
+        public void Damage(float damage)
         {
             _healhView._healthValueSlider.value -= damage;
         }
