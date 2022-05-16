@@ -11,9 +11,9 @@ namespace Platformer_2D
         public SpriteRenderer _spriteRenderer;
         public Collider2D _collider;
         public Rigidbody2D _rb;
+         [SerializeField] public CharacterObjectConfig _playerObjectConfig;
 
         public Action<PlayerObjectView> OnPlayerObjectContact { get; set; }
-        [SerializeField] CharacterObjectConfig _config;
 
         private void OnTriggerEnter2D(Collider2D collision)
         {

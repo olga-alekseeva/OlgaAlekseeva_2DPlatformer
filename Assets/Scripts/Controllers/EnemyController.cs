@@ -8,11 +8,12 @@ namespace Platformer_2D
     {
         private PlayerObjectView _playerObjectView;
         private CharacterObjectConfig _enemyObjectConfig;
-        //private CharacterObjectConfig _playerObjectConfig;
+        private CharacterObjectConfig _playerObjectConfig;
         private EnemyObjectView _enemyObjectView;
         private SetHealthValueController _changeHealth;
         private EnemyDamage _damage;
         private Player _player;
+        private UIView _UIView;
 
         bool movingSide = true;
         bool patrouling = false;
@@ -21,25 +22,32 @@ namespace Platformer_2D
         
 
         public EnemyController
-            (PlayerObjectView playerObjectView,CharacterObjectConfig enemyObjectConfig, EnemyObjectView enemyObjectView )
+            (PlayerObjectView playerObjectView,CharacterObjectConfig enemyObjectConfig, EnemyObjectView enemyObjectView,CharacterObjectConfig playerObjectConfig, UIView uIView)
         {
             
             _playerObjectView = playerObjectView;
             _enemyObjectConfig = enemyObjectConfig;
             _enemyObjectView = enemyObjectView;
+            _playerObjectConfig = playerObjectConfig;
+            _UIView = uIView;
         }
-        public void OnTriggerEnter2D(Collider2D collision)
+
+        void OnCollisionEnter(Collider2D collider)
         {
-            if (collision.gameObject.tag == "Player")
+            
+            if (_playerObjectView._collider.gameObject.tag == "Player")
             {
-                _damage.Damage(_player.health, _enemyObjectConfig.fireForce);
+                Damage();
+                if ( _UIView._healthValueSlider.value < 10)
+                {
+                    GoOnPatrolPoint();
+                }
             }
         }
 
         public void Update()
         {
-         OnTriggerEnter2D(_playerObjectView._collider);
-      
+
 
             if(Vector2.Distance(_enemyObjectView._enemyTransformPosition.transform.position, _enemyObjectView.pointOfPatrol.position) <
                 _enemyObjectView.patrolDistance && attack == false)
@@ -50,6 +58,7 @@ namespace Platformer_2D
                 _playerObjectView._transform.position) < _enemyObjectView.stoppingDistance)
             {
                 attack = true;
+               
                 patrouling = false;
                 goOnPatrolPoint = false;
             }
@@ -68,6 +77,7 @@ namespace Platformer_2D
             {
                 Attack();
 
+        
             }
             else if (goOnPatrolPoint == true)
             {
@@ -106,7 +116,7 @@ namespace Platformer_2D
         {
             _enemyObjectView._enemyTransformPosition.transform.position = Vector2.MoveTowards(_enemyObjectView._enemyTransformPosition.transform.position,
                 _playerObjectView._transform.position, _enemyObjectConfig.speed * Time.deltaTime);
-
+            OnCollisionEnter(_playerObjectView._collider);
         }
         void GoOnPatrolPoint()
         {
@@ -114,5 +124,19 @@ namespace Platformer_2D
                 Vector2.MoveTowards(_enemyObjectView._enemyTransformPosition.transform.position, _enemyObjectView.pointOfPatrol.position, 
                 _enemyObjectConfig.speed * Time.deltaTime);
         }
+         void Damage()
+        {
+          
+                _UIView._healthValueSlider.value -= _enemyObjectConfig.fireForce;
+                if (_UIView._healthValueSlider.value == 0)
+                {
+                    attack = false;
+                }
+
+            
+        }
+        
+
+
     }
 }

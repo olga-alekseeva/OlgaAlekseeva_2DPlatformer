@@ -15,5 +15,5 @@ MonoBehaviour:
   _health: 20
   _speed: 2
   _maxHealth: 20
-  _damageForce: 4
-  _jumpSpeed: 10
+  _damageForce: 1
+  _jumpSpeed: 0

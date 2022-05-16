@@ -7,9 +7,9 @@ namespace Platformer_2D
 {
     public class ChangeLevel
     {
-        private void OnTriggerEnter2D(Collider2D collision)
+        private void OnTriggerEnter2D(Collider2D collider)
         {
-            if (collision.gameObject.tag == "Player")
+            if (collider.gameObject.tag == "Player")
             {
                 ChangeScene();
             }

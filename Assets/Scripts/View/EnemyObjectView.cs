@@ -6,7 +6,7 @@ namespace Platformer_2D
 {
     public class EnemyObjectView : MonoBehaviour
     {
-        [SerializeField] public CharacterObjectConfig _characterObjectConfig;
+        [SerializeField] public CharacterObjectConfig _enemyObjectConfig;
         [SerializeField] public Transform _enemyTransformPosition;
         [SerializeField] public Transform pointOfPatrol;
         [SerializeField, Range(-50f, 50f)] public float patrolDistance;
