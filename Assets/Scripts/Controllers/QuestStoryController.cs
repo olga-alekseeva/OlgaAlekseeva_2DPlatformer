@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.PackageManager.Requests;
 
 namespace Platformer_2D
 {
@@ -47,7 +46,7 @@ namespace Platformer_2D
         }
         private void Reset(int index)
         {
-            if (index < 0 || index > _questCollection.Count)
+            if (index < 0 || index >= _questCollection.Count)
             {
                 return;
             }

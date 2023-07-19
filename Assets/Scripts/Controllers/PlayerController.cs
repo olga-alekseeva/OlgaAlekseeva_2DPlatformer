@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Platformer_2D
 {
@@ -15,8 +16,12 @@ namespace Platformer_2D
         private LevelObjectView _view;
         private SpriteAnimatorController _animatorConroller;
         private ContactPooler _contactPooler;
+        private FinishObjectView _finishObjectView;
         SpriteAnimatorConfig _animatorConfig;
-        public PlayerController(LevelObjectView view, SpriteAnimatorController spriteAnimator, CharacterObjectConfig playerObjectConfig, SpriteAnimatorConfig animatorConfig)
+        private PlayerObjectView _playerObjectView;
+        
+
+        public PlayerController(PlayerObjectView playerObjectView, LevelObjectView view, SpriteAnimatorController spriteAnimator, CharacterObjectConfig playerObjectConfig, SpriteAnimatorConfig animatorConfig, FinishObjectView finishObjectView)
         {
             _playerObjectConfig = playerObjectConfig;
             _view = view;
@@ -24,6 +29,8 @@ namespace Platformer_2D
             _animatorConfig = animatorConfig;
             _animatorConroller.StartAnimation(_view._spriteRenderer, AnimState.Idle, true, _animatorConfig.animationSpeed);
              _contactPooler = new ContactPooler(_view._collider);
+            _finishObjectView = finishObjectView;
+            _playerObjectView = playerObjectView;
 
         }
         public void Update()
@@ -32,6 +39,7 @@ namespace Platformer_2D
             _contactPooler.Update();
             _doJump = Input.GetAxis("Vertical") > 0;
             _xAxisInput = Input.GetAxis("Horizontal");
+            
             bool Move = Mathf.Abs(_xAxisInput) > _playerObjectConfig.movingTresh;
 
                 if(Move)
@@ -55,6 +63,7 @@ namespace Platformer_2D
                 }
 
             }
+           
         }
         private void MoveTowards()
         {
@@ -62,5 +71,6 @@ namespace Platformer_2D
             _view._rb.velocity = _view._rb.velocity.Change(x: _xVelosity);
             _view._transform.localScale = (_xAxisInput < 0 ? _leftScale : _rightScale);
         }
+        
     }
 }

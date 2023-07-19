@@ -10,23 +10,22 @@ namespace Platformer_2D
         private UIView _healhView;
         private CharacterObjectConfig _charObjectConfig;
         private RestartGame _restartGame;
+        private PlayerObjectView _playerObjectView;
         public float currentHealth;
 
-        public SetHealthValueController (UIView healhView, CharacterObjectConfig charObjectConfig)
+        public SetHealthValueController (UIView healhView, CharacterObjectConfig charObjectConfig, 
+            PlayerObjectView playerObjectView)
         {
             _healhView = healhView;
             _charObjectConfig = charObjectConfig;
             _restartGame = new RestartGame ();
+            _playerObjectView = playerObjectView;
         }
       
         public void Update()
         {
             currentHealth = _charObjectConfig.health;
-          if(Input.GetKeyDown (KeyCode.F))
-            {
-                Damage(5);
-            }
-           
+          
             if (_healhView._healthValueSlider.value <= 0)
             {
                 _restartGame.RestartLevel();
@@ -43,7 +42,7 @@ namespace Platformer_2D
         {
             _healhView._healthValueSlider.value = currentHealth;
         }
-        void Damage(float damage)
+        public void Damage(float damage)
         {
             _healhView._healthValueSlider.value -= damage;
         }

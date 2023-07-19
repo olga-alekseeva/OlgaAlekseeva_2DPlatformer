@@ -23,7 +23,8 @@ namespace Platformer_2D
         [SerializeField] private GeneratorLevelView _genView;
         [SerializeField] private UIView _UIView;
         [SerializeField]private PlayerObjectView _playerObjectView;
-        [SerializeField]private PatrolView _patrolView;
+        [SerializeField] private EnemyObjectView _enemyObjectView;
+       
         private GameObject Player;
 
         private SpriteAnimatorController _enemyAnimator;
@@ -37,12 +38,14 @@ namespace Platformer_2D
         private ParalaxController _paralaxController;
         private GeneratorController _generatorController;
         private QuestConfiguratorController _questConfiguratorController;
-      //  private EnemiesConfigurator _enemiesConfigurator;
         private SetHealthValueController _setHealthValueController;
-        PatrolController _patrolController;
+        private EnemyController _enemyController;
+        [SerializeField] private FinishObjectView _finishObjectView;
         private void Start()
         {
             Player = GameObject.FindGameObjectWithTag("Player");
+
+
         }
         private void Awake()
         {
@@ -52,13 +55,13 @@ namespace Platformer_2D
             _playerAnimator = new SpriteAnimatorController(_playerConfig);
             _playerAnimator.StartAnimation(_playerView._spriteRenderer, AnimState.Idle, true, _playerConfig.animationSpeed);
             _playerObjectConfig = Resources.Load<CharacterObjectConfig>("Player/PlayerObjectCfg");
-            _playerController = new PlayerController(_playerView, _playerAnimator, _playerObjectConfig, _playerConfig);
+            _playerController = new PlayerController(_playerObjectView,_playerView, _playerAnimator, _playerObjectConfig, _playerConfig, _finishObjectView);
 
 
             _enemyConfig = Resources.Load<SpriteAnimatorConfig>("Enemies/EnemyAnimCfg");
             _enemyAnimator = new SpriteAnimatorController(_enemyConfig);
             _enemyAnimator.StartAnimation(_enemyView._spriteRenderer, AnimState.Idle, true, _enemyConfig.animationSpeed);
-            _patrolController = new PatrolController(_patrolView, _playerObjectView, _enemyObjectConfig);
+            _enemyController = new EnemyController(_playerObjectView, _enemyObjectConfig, _enemyObjectView, _playerObjectConfig, _UIView);
 
             _coinConfig = Resources.Load<SpriteAnimatorConfig>("Bonuses/CoinAnimCfg");
             _coinAnimator = new SpriteAnimatorController(_coinConfig);
@@ -74,9 +77,9 @@ namespace Platformer_2D
             _questConfiguratorController = new QuestConfiguratorController(_questView);
             _questConfiguratorController.Init();
 
-            _setHealthValueController = new SetHealthValueController(_UIView, _playerObjectConfig);
-           
+            _setHealthValueController = new SetHealthValueController(_UIView, _playerObjectConfig, _playerObjectView);
 
+           // _playerController.OnCollisionEnter2D(_playerObjectView._collider);
         }
        
         void Update()
@@ -90,7 +93,7 @@ namespace Platformer_2D
             _coinAnimator.Update();
             _paralaxController.Update();
             _setHealthValueController.Update();
-            _patrolController.Update();
+            _enemyController.Update();
         }
     }
 }

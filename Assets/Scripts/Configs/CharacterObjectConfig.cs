@@ -29,7 +29,7 @@ namespace Platformer_2D
         private float _movingTresh = 0.1f;
         private float _jumpTresh = 1f;
 
-        public float health { get => _health; }
+        public float health { get => _health; set => _health = value; }
         public float speed { get => _speed; set => _speed = value; }
         public float maxHealth { get => _maxHealth;}
         public float minHealth { get => _minHealth;}
