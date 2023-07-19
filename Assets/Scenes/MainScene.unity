@@ -132,6 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 11023708}
+  - component: {fileID: 11023709}
   m_Layer: 0
   m_Name: Point
   m_TagString: Untagged
@@ -153,6 +154,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &11023709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11023707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9073c601ff6df804aa27f6d05df247f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointOfPatrol: {fileID: 11023708}
+  patrolDistance: 24.9
+  stoppingDistance: 2.95
 --- !u!1001 &33117565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -329,7 +345,7 @@ MonoBehaviour:
   _genView: {fileID: 808156851}
   _UIView: {fileID: 1782659821}
   _playerObjectView: {fileID: 609043576}
-  _patrolView: {fileID: 1119126388}
+  _patrolView: {fileID: 0}
 --- !u!1 &78545649
 GameObject:
   m_ObjectHideFlags: 0
@@ -4713,21 +4729,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4741208189133262685, guid: ede1a2121183aa94e8acdd333c8cae96, type: 3}
   m_PrefabInstance: {fileID: 4741208188287820124}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1119126388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1119126381}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9073c601ff6df804aa27f6d05df247f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pointOfPatrol: {fileID: 11023708}
-  patrolDistance: 45.5
-  stoppingDistance: 2.82
 --- !u!1 &1120560279
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,17 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;
 using UnityEngine;
 
-namespace Platformer_2D
+namespace Assets.Scripts.View
 {
     public class PatrolView : MonoBehaviour
     {
-        //[SerializeField] public Transform enemyTransform;
-        [SerializeField] public Transform pointOfPatrol;
-        [SerializeField, Range(-50f, 50f)] public float patrolDistance;
-        public float stoppingDistance;
-        
 
+        // Use this for initialization
+        void Start()
+        {
 
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

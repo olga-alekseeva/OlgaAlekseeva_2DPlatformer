@@ -8,5 +8,8 @@ namespace Platformer_2D
     {
         [SerializeField] public CharacterObjectConfig _characterObjectConfig;
         [SerializeField] public Transform _enemyTransformPosition;
+        [SerializeField] public Transform pointOfPatrol;
+        [SerializeField, Range(-50f, 50f)] public float patrolDistance;
+        public float stoppingDistance;
     }
 }

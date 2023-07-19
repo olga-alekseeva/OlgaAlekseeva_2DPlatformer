@@ -6,7 +6,7 @@ namespace Platformer_2D
 {
     public class PatrolController
     {
-        private PatrolView _patrolView;
+        //private PatrolView _patrolView;
         private PlayerObjectView _playerObjectView;
         private CharacterObjectConfig _enemyObjectConfig;
         private EnemyObjectView _enemyObjectView;
@@ -18,18 +18,17 @@ namespace Platformer_2D
         
 
         public PatrolController
-            (PatrolView patrolView,
-            PlayerObjectView playerObjectView,
+            (PlayerObjectView playerObjectView,
             CharacterObjectConfig enemyObjectConfig)
         {
-            _patrolView = patrolView;   
+           // _patrolView = patrolView;   
             _playerObjectView = playerObjectView;
             _enemyObjectConfig = enemyObjectConfig;
         }
         
        public void Update()
         {
-            if(Vector2.Distance(_enemyObjectView._enemyTransformPosition.transform.position, _patrolView.pointOfPatrol.position) < 
+            if(Vector2.Distance(_enemyObjectView._enemyTransformPosition.transform.position, _enemyObjectView.pointOfPatrol.position) < 
                 _patrolView.patrolDistance && attack == false)
             {
                 patrouling = true;
